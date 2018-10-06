@@ -2,6 +2,7 @@
 
 https://practice.geeksforgeeks.org/problems/next-larger-element/0
 
+To run the file, run below command.
 g++ nextLargerElement.cpp && ./a.out <nextLargerElement.txt
 
 */
