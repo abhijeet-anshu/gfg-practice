@@ -7,6 +7,11 @@ Author : abhijeet baranwal
 Source Problem URL:
 http://codeforces.com/blog/entry/62536
 
+Ideon Link:
+https://ideone.com/4BqiS0
+
+Github Link:
+https://github.com/abhijeet-anshu/gfg-practice/countDistinctSubarraysWithAtmostKOdds.cpp
 
 To run the file, run below command:
 g++ countDistinctSubarraysWithAtmostKOdds.cpp && ./a.out <countDistinctSubarraysWithAtmostKOdds.txt
