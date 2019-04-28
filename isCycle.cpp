@@ -68,3 +68,17 @@ bool dfs(vector<int> g[], int st) {
     inStack[st] = false;
     return 1;
 }
+
+bool isCyclic(vector<int> g[], int V) {
+    for(int i=0;i<V;i++) inStack[i] = isVisited[i] = 0;
+    bool flag;
+    for(int i=0;i<V;i++) {
+        if(isVisited[i]) continue;
+        //not covered node. Run DFS on it
+        //cout<<"Un visited "<<i << endl;
+        flag = dfs(g, i);
+        if(!flag) return 1;
+    }
+    return 0;
+}
+
