@@ -1,4 +1,4 @@
-#! /usr/bin/python2.7
+#! /usr/bin/python3
 
 '''
 File : filemaker.py
@@ -34,19 +34,20 @@ def CPPHandle(filename):
 	with open(txtFileName, 'a'):
 		os.utime(txtFileName, None)
 
-	print 'Successfully created: {}, {}'.format(filename, txtFileName)
+	print(f'Successfully created: {filename}, {txtFileName}')
 
 def createFILE(filename):	
 	if os.path.isfile(filename):
 		raise StandardError('File with same name exists!') 
 
 	ind = 1 + filename.find('.')
-	if ind is 0:
+	if ind == 0:
 		raise NameError('File name must have a type.\n'
 			'Types allowed: ['+ (','.join(File_Types)).upper() + ']')
 
 	execFuncName = filename[ind:].upper() + 'Handle'
-	#Execute the function
+	#Execute the function dynamically generated
+	#for example CPPHandle
 	try:
 		getattr(sys.modules[__name__], "%s" % execFuncName)(filename)
 	except AttributeError as e:
@@ -58,7 +59,7 @@ program_name = sys.argv[0]
 arguments = sys.argv[1:]
 
 count_args = len(arguments)
-if count_args is 0:
+if count_args == 0:
 	raise Exception(('Atleast 1 file has to be specified.\n' 
 		'Types allowed: ['+ (','.join(File_Types)).upper() + ']'))
 
