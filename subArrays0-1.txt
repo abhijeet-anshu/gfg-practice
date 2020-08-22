@@ -1,0 +1,23 @@
+2
+7
+1 0 0 1 0 1 1
+5
+1 1 1 1 0
+
+#####################
+Input:
+N = 7
+A[] = {1,0,0,1,0,1,1}
+Output: 8
+Explanation: The index range for the 8 
+sub-arrays are: (0, 1), (2, 3), (0, 3), (3, 4), 
+(4, 5) ,(2, 5), (0, 5), (1, 6)
+
+Example 2:
+
+Input:
+N = 5
+A[] = {1,1,1,1,0}
+Output: 1
+Explanation: The index range for the 
+subarray is (3,4).
