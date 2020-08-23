@@ -1,0 +1,14 @@
+1
+6
+0 1 0 0 0 0
+1 0 1 0 0 1
+##################
+Output:
+4
+
+Explaination :
+
+Input: arr1[] = {0, 1, 0, 0, 0, 0};
+       arr2[] = {1, 0, 1, 0, 0, 1};
+Output: 4
+The longest span with same sum is from index 1 to 4  (Zero indexing).
