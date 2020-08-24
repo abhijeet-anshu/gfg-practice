@@ -1,0 +1,30 @@
+4
+9 4
+baa abcd abcd abca abca cab cab cad cad
+5 4
+baa abcd abca cab cad
+3 3
+caa aaa aab
+13 12
+bhhb blkbggfecalifjfcbkjdicehhgikkdhlachlgbhji cfjjhcifladadbgcleggjgbcieihabcglblflgajgkejccj dlgdhiha ehggedljjhfldcajeceaeehkalkfeidhigkifjl gdalgkblahcldahledfghjb geldbblaaflegjhlfjlgblfbdc ibjceciedbiilkjliijgklcgliaeeic jcebjkfgfibfckfiikklecihik jdkcabjjjckgdblkljf jijlbjbliigkffhkchkclkhafbiiiblcglhfjkflbjjkih kfd lhdgidialgabfklffahiihceflebfidl
+#######
+Output:
+bdac
+bdac
+cab
+hfbcdegijkla
+
+###########
+
+Explanation:
+Test Case 1:
+Input:  Dict[ ] = { "baa", "abcd", "abca", "cab", "cad" }, k = 4
+Output: Function returns "bdac"
+Here order of characters is 'b', 'd', 'a', 'c'
+Note that words are sorted and in the given language "baa"
+comes before "abcd", therefore 'b' is before 'a' in output.
+Similarly we can find other orders.
+
+Test Case 2:
+Input: Dict[] = { "caa", "aaa", "aab" }, k = 3
+cab
