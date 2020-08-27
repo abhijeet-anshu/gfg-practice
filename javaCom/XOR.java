@@ -1,3 +1,5 @@
+package javaCom;
+
 import java.util.Scanner;
 
 class XOR

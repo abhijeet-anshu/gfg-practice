@@ -6,4 +6,4 @@ https://practice.geeksforgeeks.org/problems/bleak-numbers/0/
 https://practice.geeksforgeeks.org/problems/maximum-path-sum/1
 https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays/0
 https://practice.geeksforgeeks.org/problems/convert-to-strictly-increasing-array/0
-https://practice.geeksforgeeks.org/problems/longest-valid-parentheses/0
+https://practice.geeksforgeeks.org/problems/jumping-numbers/0/
