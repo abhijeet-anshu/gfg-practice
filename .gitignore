@@ -2,4 +2,3 @@
 *.out
 *debug*.txt
 javaCompilerOut
-.idea/workspace.xml
