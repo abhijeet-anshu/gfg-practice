@@ -1,6 +1,6 @@
-package javaCom.testWorld;
+package src.javaCom.testWorld;
 
-import javaCom.longestValidPaenthesisSet;
+import src.javaCom.longestValidPaenthesisSet;
 
 import java.util.Random;
 
