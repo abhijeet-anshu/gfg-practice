@@ -1,3 +1,5 @@
 #ignore all a.out files
 *.out
 *debug*.txt
+javaCompilerOut
+.idea/workspace.xml
