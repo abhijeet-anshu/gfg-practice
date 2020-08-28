@@ -1,3 +1,4 @@
 #ignore all a.out files
 *.out
 *debug*.txt
+javaCompilerOut

@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/a-simple-fraction/0
 
 
 To run the file, run below command:
-g++ fractionToDecimal.cpp && ./a.out <fractionToDecimal.txt
+g++ fractionToDecimal.cpp && ./a.out <../TestInput/fractionToDecimal.txt
 
 
 */

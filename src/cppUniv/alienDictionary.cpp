@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/alien-dictionary/1
 
 
 To run the file, run below command:
-g++ alienDictionary_only26Char.cpp && ./a.out <alienDictionary.txt
+g++ alienDictionary.cpp && ./a.out < ../TestInput/alienDictionary.txt
 
 
 */
@@ -19,35 +19,37 @@ g++ alienDictionary_only26Char.cpp && ./a.out <alienDictionary.txt
 using namespace std;
 
 const int LIMIT = 301;
-
-int isNode[26];
+const int DEBUG = 0;
+int lastIndex;
+char intChar[26];
+unordered_map<char, int > charInt;
 unordered_set<int> Graph[26];
 
 void reset()
 {
+	charInt.clear();
+	lastIndex = -1;
 	for(int i=0; i<26; i++)
-	{
 		Graph[i].clear();
-		isNode[i] = 0;
-	}
-		
 }
 
-int setInt(char c)
+int getInt(char c)
 {
-	int val = c - 'a';
-	if(isNode[val]) 
-		return val;
-	
-	isNode[val] = 1;
-	return val;
+	if(charInt.find(c)!=charInt.end())
+	{
+		return charInt[c];
+	}
+	charInt.insert({c, ++lastIndex});
+	intChar[lastIndex] = c;
+	return lastIndex;
 }
 
 
 void add_edge(char pred, char succ)
 {
-	int firstNode  = pred-'a';
-	int secondNode = succ-'a';
+	if(DEBUG) { cout<<"\tEdge: "<<pred << "_____" << succ<<endl;}
+	int firstNode = getInt(pred);
+	int secondNode = getInt(succ);
 
 	//add edge from first to second
 	Graph[firstNode].insert(secondNode);
@@ -69,42 +71,45 @@ void dfsVisit(int node)
 		dfsVisit(nbr);
 	}
 	visited[node] = 2;// permanent
-	myFinalList[finalListIndex--] = node + 'a';
+	myFinalList[finalListIndex--] = intChar[node];
+	if(DEBUG) { cout<<"finalised : " << intChar[node] << endl; }
 }
 
 string topoligical_sort(int nodeSize)
 {
-	
+	assert(nodeSize==1+lastIndex);
 	//mark all nodes as unvisited
 	
-	for(int i=0; i<26; i++)
+	for(int i=0; i<nodeSize; i++)
 	{
 		visited[i] = 0;
 	}
 	finalListIndex = nodeSize-1;
 	//for each node if not visited, visit
-	for(int i=0; i<26; i++)
+	for(int i=0; i<nodeSize; i++)
 	{
-		if(!(isNode[i])) continue;
 		if(visited[i])  continue;
 
 		dfsVisit(i);
 	}
 	myFinalList[nodeSize] = 0;
 	
+	if(DEBUG) {cout<<"\nAnswer:\t";}
+	
 	return myFinalList;
 }
+void printWords(string[], int);
 
 string findOrder(string dict[], int n, int k)
 {
 	reset();
-	
+	printWords(dict, n); //debug
 
 	//read all chars and create a map
 	for(int i=0; i<n; i++) 
 	{
 		for(auto c : dict[i])
-			setInt(c);
+			getInt(c);
 	}
 		
 	//read all relations
@@ -114,6 +119,7 @@ string findOrder(string dict[], int n, int k)
 		string word1 = dict[i], word2 = dict[i+1];
 		//find the first unequal character
 		
+		if(DEBUG) {cout<<"\n\nComparing words : "<< word1 + " with "  + word2<<endl;}
 
 		for(int j=0; j<std::min(word1.length(), word2.length()); j++)
 		{
@@ -127,6 +133,30 @@ string findOrder(string dict[], int n, int k)
 	}
 	//graph created, sort it now. using below algo for topo sorting
 
+	/*
+	-------TOPOLOGICAL SORTING usign DFS
+	L ← Empty list that will contain the sorted nodes
+	while exists nodes without a permanent mark do
+		select an unmarked node n
+		visit(n)
+
+	function visit(node n)
+		if n has a permanent mark then
+			return
+		if n has a temporary mark then
+			stop	 (not a DAG)
+
+		mark n with a temporary mark
+
+		for each node m with an edge from n to m do
+			visit(m)
+
+		remove temporary mark from n
+		mark n with a permanent mark
+		add n to head of L
+
+	*/
+	
 	return topoligical_sort(k) ;
 
 }
@@ -146,6 +176,15 @@ int main(void)
 			cin>>words[i];
 		assert(n!=0);
 		cout<<findOrder(words, n, k)<<endl;
+		if(DEBUG) {cout<<"$$$$$$$$$$$$$$$$$\n\n\n\n\n";}
 	}
 }
 
+void printWords(string words[], int n)
+{
+	if(!DEBUG) return;
+	cout<<" "<<n<<endl;
+	for(int i=0; i<n; i++)
+		cout<<words[i]<<' ';
+	cout<<'\n';
+}

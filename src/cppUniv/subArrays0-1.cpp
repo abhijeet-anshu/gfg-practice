@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/count-subarrays-with-equal-number-of
 
 
 To run the file, run below command:
-g++ subArrays0-1.cpp && ./a.out <subArrays0-1.txt
+g++ subArrays0-1.cpp && ./a.out <../TestInput/subArrays0-1.txt
 
 
 */

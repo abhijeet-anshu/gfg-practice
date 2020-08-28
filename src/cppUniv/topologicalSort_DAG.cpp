@@ -7,7 +7,7 @@ Ideon Link:
 Github Link:
 https://github.com/abhijeet-anshu/gfg-practice/topologicalSort_DAG.cpp
 To run the file, run below command:
-g++ topologicalSort_DAG.cpp && ./a.out < topologicalSort_DAG.tx
+g++ topologicalSort_DAG.cpp && ./a.out < ../TestInput/topologicalSort_DAG.tx
 
 */
 
