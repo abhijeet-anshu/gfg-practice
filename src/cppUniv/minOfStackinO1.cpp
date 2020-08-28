@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/get-minimum-element-from-stack/1/?re
 
 
 To run the file, run below command:
-g++ minOfStackinO1.cpp && ./a.out <minOfStackinO1.txt
+g++ minOfStackinO1.cpp && ./a.out <../TestInput/minOfStackinO1.txt
 
 
 */

@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/longest-span-with-same-sum-in-two-bi
 
 
 To run the file, run below command:
-g++ longestMatchingSpan.cpp && ./a.out <longestMatchingSpan.txt
+g++ longestMatchingSpan.cpp && ./a.out <../TestInput/longestMatchingSpan.txt
 
 
 */

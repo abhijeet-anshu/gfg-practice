@@ -8,7 +8,7 @@ Ideon Link:
 Github Link:
 https://github.com/abhijeet-anshu/gfg-practice/isCycle.cpp
 To run the file, run below command:
-g++ isCycle.cpp && ./a.out < isCycle.txt
+g++ isCycle.cpp && ./a.out < ../TestInput/isCycle.txt
 */
 
 

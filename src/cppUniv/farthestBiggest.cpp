@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/maximum-index/0/
 
 
 To run the file, run below command:
-g++ farthestBiggest.cpp && ./a.out <farthestBiggest.txt
+g++ farthestBiggest.cpp && ./a.out < ../TestInput/farthestBiggest.txt
 
 
 */

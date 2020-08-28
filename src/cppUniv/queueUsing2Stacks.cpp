@@ -9,7 +9,7 @@ Source Problem URL:
 
 
 To run the file, run below command:
-g++ queueUsing2Stacks.cpp && ./a.out <queueUsing2Stacks.txt
+g++ queueUsing2Stacks.cpp && ./a.out <../TestInput/queueUsing2Stacks.txt
 
 
 */

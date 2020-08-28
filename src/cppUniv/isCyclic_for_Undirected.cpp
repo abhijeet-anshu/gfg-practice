@@ -7,7 +7,7 @@ Ideon Link:
 Github Link:
 https://github.com/abhijeet-anshu/gfg-practice/isCyclic_for_Undirected.cpp
 To run the file, run below command:
-g++ isCyclic_for_Undirected.cpp && ./a.out < isCyclic_for_Undirected.txt
+g++ isCyclic_for_Undirected.cpp && ./a.out < ../TestInput/isCyclic_for_Undirected.txt
 */
 
 

@@ -9,7 +9,7 @@ Source Problem URL:
 
 
 To run the file, run below command:
-g++ subArrayDivisibleByK.cpp && ./a.out <subArrayDivisibleByK.txt
+g++ subArrayDivisibleByK.cpp && ./a.out <../TestInput/subArrayDivisibleByK.txt
 
 
 */

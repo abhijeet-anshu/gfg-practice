@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/relative-sorting/0/
 
 
 To run the file, run below command:
-g++ relativeSorting.cpp && ./a.out <relativeSorting.txt
+g++ relativeSorting.cpp && ./a.out <../TestInput/relativeSorting.txt
 
 
 */

@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/circular-tour/1
 
 
 To run the file, run below command:
-g++ circularTour.cpp && ./a.out <circularTour.txt
+g++ circularTour.cpp && ./a.out < ../TestInput/circularTour.txt
 
 
 */

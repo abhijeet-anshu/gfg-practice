@@ -12,7 +12,7 @@ Optimized for a TOP operation to run in O(1) time.
 
 
 To run the file, run below command:
-g++ stackUsing2Queues.cpp && ./a.out <stackUsing2Queues.txt
+g++ stackUsing2Queues.cpp && ./a.out <../TestInput/stackUsing2Queues.txt
 
 
 */

@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/alien-dictionary/1
 
 
 To run the file, run below command:
-g++ alienDictionary.cpp && ./a.out <alienDictionary.txt
+g++ alienDictionary.cpp && ./a.out < ../TestInput/alienDictionary.txt
 
 
 */

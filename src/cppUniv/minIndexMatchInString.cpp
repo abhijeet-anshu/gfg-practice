@@ -9,7 +9,7 @@ https://practice.geeksforgeeks.org/problems/minimum-indexed-character0221/1
 
 
 To run the file, run below command:
-g++ minIndexMatchInString.cpp && ./a.out <minIndexMatchInString.txt
+g++ minIndexMatchInString.cpp && ./a.out <../TestInput/minIndexMatchInString.txt
 
 
 */

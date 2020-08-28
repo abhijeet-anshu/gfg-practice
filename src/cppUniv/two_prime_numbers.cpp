@@ -9,7 +9,7 @@ Source Problem URL:
 
 
 To run the file, run below command:
-g++ two_prime_numbers.cpp && ./a.out <two_prime_numbers.txt
+g++ two_prime_numbers.cpp && ./a.out <../TestInput/two_prime_numbers.txt
 
 
 */
