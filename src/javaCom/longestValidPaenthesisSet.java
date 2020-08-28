@@ -2,7 +2,7 @@
 https://practice.geeksforgeeks.org/problems/longest-valid-parentheses/0
  */
 
-package src.javaCom;
+package javaCom;
 
 import java.util.Scanner;
 import java.util.Stack;

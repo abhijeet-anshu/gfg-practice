@@ -1,4 +1,4 @@
-package src.javaCom;
+package javaCom;
 
 import java.util.Scanner;
 

@@ -1,6 +1,4 @@
-package src.javaCom.testWorld;
-
-import src.javaCom.longestValidPaenthesisSet;
+import javaCom.longestValidPaenthesisSet;
 
 import java.util.Random;
 
@@ -41,6 +39,7 @@ public class TestLongestValidParenthesisSet
 				System.out.println("---end-----");
 
 			}
+			System.out.println("result match : " + i);
 		}
 
 	}
