@@ -1,9 +1,0 @@
-https://practice.geeksforgeeks.org/explore/?category%5B%5D=Hash&difficulty%5B%5D=1&page=1
-
-https://practice.geeksforgeeks.org/problems/nuts-and-bolts-problem/0
-https://practice.geeksforgeeks.org/problems/maximum-subset-xor/1
-https://practice.geeksforgeeks.org/problems/ugly-numbers/0
-
-https://practice.geeksforgeeks.org/problems/snake-and-ladder-problem/0/
-
-https://auth.geeksforgeeks.org/user/ritiksingh31/practice -- all hard
