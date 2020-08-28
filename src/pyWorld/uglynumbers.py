@@ -8,7 +8,7 @@ https://practice.geeksforgeeks.org/problems/ugly-numbers/0
 
 
 To run the file, run below command:
-python uglynumbers.py <uglynumbers.txt
+python uglynumbers.py <../TestInput/uglynumbers.txt
 
 
 '''
