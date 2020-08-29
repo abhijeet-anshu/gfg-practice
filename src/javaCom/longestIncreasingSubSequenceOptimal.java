@@ -33,9 +33,9 @@ public class longestIncreasingSubSequenceOptimal
 
 		LIS[++LIS_INDEX] = InputArray[0];
 
-		if(DEBUG)
+		if(LOG_LEVEL==2)
 		{
-			printArray(LIS, LIS_INDEX+1);
+			printArray(LIS, LIS_INDEX+1, LOG_TRACE);
 		}
 
 
@@ -77,75 +77,101 @@ public class longestIncreasingSubSequenceOptimal
 				LIS[LIS_INDEX] = _ArrI;
 			else
 				LIS[1+findJustSmallerLISIndex(_ArrI)] = _ArrI;
-			if(DEBUG)
+			if(LOG_LEVEL==2)
 			{
-				printArray(LIS, LIS_INDEX+1);
+				printArray(LIS, LIS_INDEX+1, LOG_TRACE);
 			}
 		}
 
 		return 1+LIS_INDEX;
 	}
 
-	private static void printArray(int[] arr, int length)
+
+
+	private static void printArray(int[] arr, int length, int _logLevel)
 	{
-		if(!DEBUG) return;
+		if(!isEnabled(_logLevel)) return;
 		for(int i=0; i<length; i++)
 			System.out.print(arr[i] + " ");
 		System.out.println();
 	}
 
+	private static void printArray(int[] arr, int[] inp, int length, int _logLevel)
+	{
+		if(!isEnabled(_logLevel)) return;
+		for(int i=0; i<length; i++)
+			System.out.print(inp[arr[i]] + " ");
+		System.out.println();
+	}
+
 	public int[] computeLIS()
 	{
-		if(N==0) return new int[0];
-
-		HashMap<Integer, Integer> prev = new HashMap<Integer, Integer>();
-		LIS[++LIS_INDEX] = InputArray[0];
-		prev.put(InputArray[0], Integer.MIN_VALUE);
-
-
+		if(N==0)
+			return new int[0];
+		//in LIS, store the index of the value from Input Array
+		int[] Predecessor = new int[N];
+		LIS[++LIS_INDEX] = 0;
+		Predecessor[0] = Integer.MIN_VALUE;
+		printArray(LIS, InputArray, 1+LIS_INDEX, LOG_TRACE);
 		for(int i=1; i<N; i++)
 		{
-			int _ArrI = InputArray[i];
-			if(_ArrI<=LIS[0])
+			int x = InputArray[i];
+			int minLIS = InputArray[LIS[0]];
+			int maxLIS = InputArray[LIS[LIS_INDEX]];
+
+			if(x<=minLIS)
 			{
-				//updation
-				LIS[0] = _ArrI;
-				prev.put(_ArrI, Integer.MIN_VALUE);
+				//begin a new LIS
+				LIS[0] = i;
+				Predecessor[i] =  Integer.MIN_VALUE;
 			}
-			else if(_ArrI>LIS[LIS_INDEX])
+			else if(x>maxLIS)
 			{
-				//extension
-				LIS[++LIS_INDEX] = _ArrI;
-				prev.put(_ArrI, LIS[LIS_INDEX-1]);
+				//clone the largest LIS and extend it with x
+				LIS[++LIS_INDEX] = i;
+				Predecessor[i] = LIS[LIS_INDEX-1];
 			}
-			else if(_ArrI==LIS[LIS_INDEX])
-				LIS[LIS_INDEX] = _ArrI; //no extension
+			else if(x==maxLIS)
+			{
+				LIS[LIS_INDEX] = i;
+				Predecessor[i] = LIS[LIS_INDEX-1];
+			}
 			else
 			{
-				int myLast = findJustSmallerLISIndex(_ArrI);
-				LIS[1+myLast] = _ArrI;
-				prev.put(_ArrI, LIS[myLast]);
+				//lies in between (0, LIS_INDEX) non inclusive
+				int lastIndex = findJustSmallerLISIndex(x, false);
+				Predecessor[i] = LIS[lastIndex];
+				LIS[lastIndex+1] = i;
 			}
+			printArray(LIS, InputArray,  1+LIS_INDEX, LOG_TRACE);
 		}
-		int[] myLISResult = new int[1+LIS_INDEX];
-		int _index = LIS_INDEX;
-		int _lastVal = LIS[_index];
-		myLISResult[_index] = _lastVal;
-		while(--_index>=0)
+
+		int _LIS_ARR[] = new int[1+LIS_INDEX];
+		_LIS_ARR[LIS_INDEX] = readLIS(LIS_INDEX, false);
+		int _lastIndex = LIS[LIS_INDEX];
+		for(int index=LIS_INDEX-1; index>=0; index--)
 		{
-			if(!prev.containsKey(_lastVal))
+			_lastIndex = Predecessor[_lastIndex];
+			if(_lastIndex==Integer.MIN_VALUE)
 			{
 				throw new RuntimeException("Invalid Computation");
 			}
-			_lastVal = prev.get(_lastVal);
-			myLISResult[_index] = _lastVal;
+			_LIS_ARR[index] = InputArray[_lastIndex];
 		}
-
-		printArray(myLISResult, LIS_INDEX+1);
-		return myLISResult;
+		printArray(_LIS_ARR, 1+LIS_INDEX, LOG_INFO);
+		return _LIS_ARR;
+	}
+	private int readLIS(int index, boolean direct)
+	{
+		int _lisV = LIS[index];
+		return direct?_lisV:InputArray[_lisV];
 	}
 
 	private int findJustSmallerLISIndex(int key)
+	{
+		return findJustSmallerLISIndex(key, true);
+	}
+	private int findJustSmallerLISIndex(int key, boolean direct)
 	{
 		//perform b-search over LIS[0] .. LIS[LIS_INDEX]
 		// such that find max index, i
@@ -156,25 +182,35 @@ public class longestIncreasingSubSequenceOptimal
 		int answer = -1;
 		left = 0;
 		right = LIS_INDEX;
-		if(key<=LIS[left] || key> LIS[right])
+		if(key<=readLIS(left, direct) || key> readLIS(right, direct))
 			throw new RuntimeException("In bsearch, solution is out of boundary");
 
 		//b Search
 		while(left<=right)
 		{
 			mid = (left+right)/2;
-			if(key<=LIS[mid])
+			if(key<=readLIS(mid, direct))
 				right = mid-1;
 			else// =>(key>LIS[mid])
 			{
-				if(key<=LIS[mid+1])
+				if(key<=readLIS(mid+1, direct))
 					return mid;
 				left = mid+1;
 			}
 		}
 		throw new RuntimeException(" no solution ");
 	}
-	static boolean DEBUG = false;
+
+	static int LOG_LEVEL;
+	static final int LOG_FATAL = 0;
+	static final int LOG_INFO = 1;
+	static final int LOG_TRACE = 2;
+
+	static boolean isEnabled(int _level)
+	{
+		return LOG_LEVEL>=_level;
+	}
+
 	public static void main(String[] args)
 	{
 		Scanner s = new Scanner(System.in);
@@ -188,10 +224,9 @@ public class longestIncreasingSubSequenceOptimal
 
 			for(int i=0; i<n; i++)
 				inpArr[i] = s.nextInt();
-			DEBUG = false;
+			LOG_LEVEL = LOG_INFO;
 			System.out.println(
 				new longestIncreasingSubSequenceOptimal(inpArr).computeLISLength());
-			DEBUG = true;
 			new longestIncreasingSubSequenceOptimal(inpArr).computeLIS();
 		}
 	}
