@@ -1,5 +1,6 @@
 package javaCom;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class longestIncreasingSubSequenceOptimal
@@ -34,7 +35,7 @@ public class longestIncreasingSubSequenceOptimal
 
 		if(DEBUG)
 		{
-			debugLISArray();
+			printArray(LIS, LIS_INDEX+1);
 		}
 
 
@@ -78,25 +79,70 @@ public class longestIncreasingSubSequenceOptimal
 				LIS[1+findJustSmallerLISIndex(_ArrI)] = _ArrI;
 			if(DEBUG)
 			{
-				debugLISArray();
+				printArray(LIS, LIS_INDEX+1);
 			}
 		}
 
 		return 1+LIS_INDEX;
 	}
 
-	private void debugLISArray()
+	private static void printArray(int[] arr, int length)
 	{
 		if(!DEBUG) return;
-		for(int i=0; i<=LIS_INDEX; i++)
-			System.out.print(LIS[i] + " ");
+		for(int i=0; i<length; i++)
+			System.out.print(arr[i] + " ");
 		System.out.println();
 	}
 
 	public int[] computeLIS()
 	{
-	
-		return new int[0];
+		if(N==0) return new int[0];
+
+		HashMap<Integer, Integer> prev = new HashMap<Integer, Integer>();
+		LIS[++LIS_INDEX] = InputArray[0];
+		prev.put(InputArray[0], Integer.MIN_VALUE);
+
+
+		for(int i=1; i<N; i++)
+		{
+			int _ArrI = InputArray[i];
+			if(_ArrI<=LIS[0])
+			{
+				//updation
+				LIS[0] = _ArrI;
+				prev.put(_ArrI, Integer.MIN_VALUE);
+			}
+			else if(_ArrI>LIS[LIS_INDEX])
+			{
+				//extension
+				LIS[++LIS_INDEX] = _ArrI;
+				prev.put(_ArrI, LIS[LIS_INDEX-1]);
+			}
+			else if(_ArrI==LIS[LIS_INDEX])
+				LIS[LIS_INDEX] = _ArrI; //no extension
+			else
+			{
+				int myLast = findJustSmallerLISIndex(_ArrI);
+				LIS[1+myLast] = _ArrI;
+				prev.put(_ArrI, LIS[myLast]);
+			}
+		}
+		int[] myLISResult = new int[1+LIS_INDEX];
+		int _index = LIS_INDEX;
+		int _lastVal = LIS[_index];
+		myLISResult[_index] = _lastVal;
+		while(--_index>=0)
+		{
+			if(!prev.containsKey(_lastVal))
+			{
+				throw new RuntimeException("Invalid Computation");
+			}
+			_lastVal = prev.get(_lastVal);
+			myLISResult[_index] = _lastVal;
+		}
+
+		printArray(myLISResult, LIS_INDEX+1);
+		return myLISResult;
 	}
 
 	private int findJustSmallerLISIndex(int key)
@@ -142,10 +188,11 @@ public class longestIncreasingSubSequenceOptimal
 
 			for(int i=0; i<n; i++)
 				inpArr[i] = s.nextInt();
-
+			DEBUG = false;
 			System.out.println(
 				new longestIncreasingSubSequenceOptimal(inpArr).computeLISLength());
-
+			DEBUG = true;
+			new longestIncreasingSubSequenceOptimal(inpArr).computeLIS();
 		}
 	}
 
