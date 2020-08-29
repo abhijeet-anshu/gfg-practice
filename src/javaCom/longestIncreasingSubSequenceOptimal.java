@@ -33,11 +33,7 @@ public class longestIncreasingSubSequenceOptimal
 
 		LIS[++LIS_INDEX] = InputArray[0];
 
-		if(LOG_LEVEL==2)
-		{
-			printArray(LIS, LIS_INDEX+1, LOG_TRACE);
-		}
-
+		printArray(LIS, LIS_INDEX+1, LOG_TRACE);
 
 			//LIS exists from 0..LIS_INDEX
 			//an element at index i would denote, a LIS of length  i + 1, ending with LIS[i]
@@ -77,10 +73,8 @@ public class longestIncreasingSubSequenceOptimal
 				LIS[LIS_INDEX] = _ArrI;
 			else
 				LIS[1+findJustSmallerLISIndex(_ArrI)] = _ArrI;
-			if(LOG_LEVEL==2)
-			{
-				printArray(LIS, LIS_INDEX+1, LOG_TRACE);
-			}
+
+			printArray(LIS, LIS_INDEX+1, LOG_TRACE);
 		}
 
 		return 1+LIS_INDEX;
