@@ -2,7 +2,6 @@
 
 
 File : queueUsing2Stacks.cpp
-Author : abhijeet baranwal
 
 Source Problem URL:
 #Add URL here:

@@ -2,7 +2,6 @@
 
 
 File : circularTour.cpp
-Author : abhijeet baranwal
 
 Source Problem URL:
 https://practice.geeksforgeeks.org/problems/circular-tour/1

@@ -2,7 +2,6 @@
 
 
 File : minOfStackinO1.cpp
-Author : abhijeet baranwal
 
 Source Problem URL:
 https://practice.geeksforgeeks.org/problems/get-minimum-element-from-stack/1/?ref=self

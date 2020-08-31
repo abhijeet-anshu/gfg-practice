@@ -1,6 +1,5 @@
 /*
 File : isCycle.cpp
-Author : abhijeet baranwal
 Source Problem URL:
 https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 Ideon Link:

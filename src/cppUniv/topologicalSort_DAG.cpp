@@ -1,6 +1,5 @@
 /*
 File : topologicalSort_DAG.cpp
-Author : abhijeet baranwal
 Source Problem URL:
 https://practice.geeksforgeeks.org/problems/topological-sort/1/
 Ideon Link:
