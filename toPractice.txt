@@ -16,5 +16,4 @@ https://practice.geeksforgeeks.org/problems/numbers-with-one-absolute-difference
 https://practice.geeksforgeeks.org/problems/find-sum-of-different-corresponding-bits-for-all-pairs/0\
 https://practice.geeksforgeeks.org/problems/find-median-in-a-stream/0
 https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1 -- no access (solve somewhere elsE)
-https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence/0
 
