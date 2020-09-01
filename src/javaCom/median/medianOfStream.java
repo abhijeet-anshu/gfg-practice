@@ -1,4 +1,4 @@
-package javaCom;
+package javaCom.median;
 
 import javax.naming.LimitExceededException;
 import java.util.NoSuchElementException;

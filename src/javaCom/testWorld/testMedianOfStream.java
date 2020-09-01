@@ -1,4 +1,4 @@
-import javaCom.medianOfStream;
+import javaCom.median.*;
 import org.junit.Test;
 import qa.GenerateArray;
 
@@ -56,11 +56,14 @@ public class testMedianOfStream
 	{
 		List<Integer> streamData = new ArrayList<Integer>();
 		medianOfStream _medianOfStream = new medianOfStream();
+		medianOfStreamUsingPQ _medianOfStreamPQ = new medianOfStreamUsingPQ();
 		for(int myIndex = 0; myIndex<testData.length; myIndex++)
 		{
 			streamData.add(testData[myIndex]);
 			int _median = _medianOfStream.getMedianOnline(testData[myIndex]);
-			if(breaks[myIndex]==1)
+			int _median2 = _medianOfStreamPQ.getMedianOnline(testData[myIndex]);
+			if(breaks[myIndex]!=1)
+				continue;
 			{
 				streamData.sort((a, b) -> a.compareTo(b));
 				int _ActualMedian = Integer.MIN_VALUE;
@@ -75,6 +78,7 @@ public class testMedianOfStream
 					_ActualMedian = streamData.get(_Sz);
 				}
 				assertEquals(_ActualMedian, _median);
+				assertEquals(_ActualMedian, _median2);
 			}
 		}
 	}
